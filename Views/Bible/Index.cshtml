@@ -1,0 +1,32 @@
+﻿@model List<BibleApplication.Models.BibleVerse>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<form asp-controller="Bible" asp-action="Search" method="post">
+    <input type="text" name="searchText" maxlength="1000" data-val="true" data-val-maxwords="Maximum 90 words allowed." />
+    <select name="testament">
+        <option value="Both">Both</option>
+        <option value="OldTestament">Old Testament</option>
+        <option value="NewTestament">New Testament</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <!-- Display error message if ViewData["ErrorMessage"] is not null or empty -->
+    <div class="text-danger">@ViewData["ErrorMessage"]</div>
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <!-- Display search results if Model is not null and contains at least one item -->
+    <h2>Search Results:</h2>
+    <ul>
+        @foreach (var verse in Model)
+        {
+            <!-- Iterate over each Bible verse in the Model and display its details -->
+            <li>@verse.Book @verse.Chapter:@verse.Verse - @verse.Text</li>
+        }
+    </ul>
+}
+<!-- ALL WORK DONE BY JAKIN ROGEL -->
