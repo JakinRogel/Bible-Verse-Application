@@ -25,12 +25,7 @@ public class BibleService
     /// <returns>A validation message if validation fails, otherwise null.</returns>
     /// <exception cref="ArgumentNullException">Thrown when searchText is null.</exception>
     public string ValidateSearchText(string searchText)
-    {
-        // Check if searchText is null
-        if (searchText == null)
-        {
-            throw new ArgumentNullException(nameof(searchText), "Search text cannot be null.");
-        }
+    { 
 
         // Check if searchText is empty or contains only white space
         if (string.IsNullOrWhiteSpace(searchText))
